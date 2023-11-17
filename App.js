@@ -11,16 +11,18 @@ const Stack = createNativeStackNavigator();
 
 export default function App (){
   return(
-    <AuthContextProvider>
+    
       <NavigationContainer>
+      <AuthContextProvider>
        <Stack.Navigator>
         <Stack.Screen options={{headerShown: false}} name="Homescreen" component={Homescreen}></Stack.Screen>
         <Stack.Screen options={{headerShown: false}} name="Pickupscreen" component={Pickupscreen}></Stack.Screen>
         <Stack.Screen options={{headerShown:false}} name="Ngologin" component={Ngologin}></Stack.Screen>
         <Stack.Screen options={{headerShown:false}} name="Pickupstatus" component={Pickupstatus}></Stack.Screen>
        </Stack.Navigator>
+       </AuthContextProvider>
      </NavigationContainer>
-     </AuthContextProvider>
+     
      
       
     )

@@ -2,6 +2,10 @@ import { StyleSheet, Text, View, KeyboardAvoidingView, TextInput, TouchableOpaci
 import React, { useState } from 'react'
 import Pickupstatus from './Pickupstatus';
 import { useNavigation } from '@react-navigation/native'
+import { loginUserAccoutn } from '../appwrite/service';
+import { useUser } from '../context/AuthContext';
+
+
 
 const handleLinkpress = () => {
     const url = 'https://annadata-rk.vercel.app/signup'; // iss link ko web ka login se replace kr dunga, HUE HUE HUE
@@ -12,19 +16,16 @@ const Ngologin = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const navigation = useNavigation();
-
-    const navigateToPickupstatus = () => {
-        navigation.navigate('Pickupstatus');
-    };
-
+    const {setIsAuth, setUser}=useUser();
     const handleLogin = async(e)=>{
         e.preventDefault();
         try {
-            const res = await loginUserAccoutn(formData.email, formData.password);
+            const res = await loginUserAccoutn(username, password);
+            console.log(res)
             if (res) {
-                // setUser(formData.name, formData.email)
+                setUser({name: "", email:username})
                 setIsAuth(true);
-                router.push('/dash')
+                navigation.navigate(Pickupstatus)
             }
         } catch (error) {
             console.log('somethign went wrong in login', error)
@@ -64,7 +65,7 @@ const Ngologin = () => {
             {/* The Login button goes here */}
             <View>
                 <TouchableOpacity
-                    onPress={navigateToPickupstatus}
+                    onPress={handleLogin}
                     style={styles.loginbutton}>
                     <Text>
                         LOGIN
@@ -76,7 +77,7 @@ const Ngologin = () => {
             {/* The registration link for NGO is here */}
             <View style={{ marginTop: 10 }}>
                 <Text
-                    onPress={handleLinkPress}
+
                     style={{ color: '#4FA', fontSize: 12 }}>
                     Not Rgistered? Click here!
                 </Text>

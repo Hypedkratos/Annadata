@@ -1,5 +1,8 @@
-import { getCurrentUser } from './appwrite'
+
 import { createContext, useContext, useEffect, useState } from 'react'
+import { getCurrentUser } from '../appwrite/service';
+import { useNavigation } from '@react-navigation/native';
+import Pickupstatus from '../screens/Pickupstatus';
 export const intialUser = {
     name: '',
     email: '',
@@ -16,7 +19,7 @@ const intialState = {
 const AuthContext = createContext(intialState);
 
 const AuthContextProvider = ({ children }) => {
-    
+    const navigation= useNavigation();
     const [user, setUser] = useState({
         name: '',
         email: '',
@@ -28,7 +31,7 @@ const AuthContextProvider = ({ children }) => {
         if (res) {
             setIsAuth(true);
             setUser({ name: res.name, email: res.email });
-            
+            navigation.navigate(Pickupstatus)
         }
     }
 

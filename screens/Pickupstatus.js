@@ -1,20 +1,32 @@
-import { StyleSheet, Text, View,ScrollView } from 'react-native'
+import { StyleSheet, Text, View,ScrollView, TouchableOpacity } from 'react-native'
 import React, {useEffect, useState} from 'react'
 import { useNavigation } from '@react-navigation/native'
+import { logoutUserAccount } from '../appwrite/service';
+import Ngologin from './Ngologin';
+import { useUser } from '../context/AuthContext';
 
 const Pickupstatus = () => {
   const [pickupData, setPickupData] = useState([]);
-  useEffect(() => {
-    {/*Idhar se data fetch krwana hai*/}
-    fetchDataFromMongoDB();
-  }, []);
 
-  const fetchDataFromMongoDB = async () => {
-    
-  };
+  const {setIsAuth, setUser, user}= useUser()
+  const navigation=useNavigation();
+  const handleLogout = async(e)=>{
+    e.preventDefault();
+    try {
+        const res = await logoutUserAccount();
+        console.log(res)
+        if (res) {
+            setUser({name:"", email:""})
+            setIsAuth(false);
+            navigation.navigate(Ngologin)
+        }
+    } catch (error) {
+        console.log('somethign went wrong in login', error)
+    }
+}
 
   return (
-    <ScrollView horizontal>
+    <ScrollView vertical>
       <View style={styles.maincontainer}>
         <Text
         style={{fontSize:20, color:'#000', fontWeight:'bold', textAlign:'left'}}
@@ -39,6 +51,19 @@ const Pickupstatus = () => {
             <Text style={styles.columnData}>{item.area}</Text>
           </View>
         ))}
+      </View>
+      <View>
+        <TouchableOpacity
+        onPress={handleLogout}
+        style={styles.Buttoncontainer}
+        >
+          <Text>
+            LOGOUT
+          </Text>
+        </TouchableOpacity>
+        <Text>
+          {user.name}
+        </Text>
       </View>
       </ScrollView>
   )
@@ -81,4 +106,14 @@ const styles = StyleSheet.create({
   columnData: {
     flex: 1,
   },
+  Buttoncontainer: {
+    alignContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#FA3',
+    padding: 6,
+    width: 213,
+    height: 39,
+    borderRadius: 30,
+    marginTop: 60
+  }
 })
