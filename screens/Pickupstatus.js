@@ -29,7 +29,7 @@ const Pickupstatus = () => {
     <ScrollView vertical>
       <View style={styles.maincontainer}>
         <Text
-        style={{fontSize:20, color:'#000', fontWeight:'bold', textAlign:'left'}}
+        style={{fontSize:20, color:'#3498db', fontWeight:'bold', textAlign:'left'}}
         >LIST OF AVAILABLE PICKUPS</Text>
       </View>
 
@@ -57,11 +57,13 @@ const Pickupstatus = () => {
         onPress={handleLogout}
         style={styles.Buttoncontainer}
         >
-          <Text>
+          <Text
+          style={{color:'#fff', fontWeight:'bold'}}>
             LOGOUT
           </Text>
         </TouchableOpacity>
-        <Text>
+        <Text 
+        style={{textAlign:'center', marginTop: 15}}>
           {user.name}
         </Text>
       </View>
@@ -107,13 +109,18 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   Buttoncontainer: {
-    alignContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#FA3',
-    padding: 6,
-    width: 213,
-    height: 39,
+    backgroundColor: '#3498db',
     borderRadius: 30,
-    marginTop: 60
+    width: 130,
+    paddingVertical: 15,
+    paddingHorizontal: 20,
+    marginTop: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+    elevation: 5,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 2,
+    marginLeft: 135
   }
 })

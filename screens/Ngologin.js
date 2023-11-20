@@ -37,7 +37,7 @@ const Ngologin = () => {
             <View>
                 <Text
                     style={{
-                        color: 'black', fontSize: 40, fontWeight: 'bold', textAlign: 'justify',
+                        color: '#3498db', fontSize: 40, fontWeight: 'bold', textAlign: 'justify',
                         marginLeft: 15, marginRight: 15, marginTop: -200
                     }}>
                     Login</Text>
@@ -67,7 +67,7 @@ const Ngologin = () => {
                 <TouchableOpacity
                     onPress={handleLogin}
                     style={styles.loginbutton}>
-                    <Text>
+                    <Text style={{fontSize:15, fontWeight:'bold', color: '#fff'}}>
                         LOGIN
                     </Text>
 
@@ -75,11 +75,11 @@ const Ngologin = () => {
             </View>
 
             {/* The registration link for NGO is here */}
-            <View style={{ marginTop: 10 }}>
+            <View style={{ marginTop: 15 }}>
                 <Text
 
-                    style={{ color: '#4FA', fontSize: 12 }}>
-                    Not Rgistered? Click here!
+                    style={{ color: '#0645AD', fontSize: 13 }}>
+                    Not Registered? Click here!
                 </Text>
             </View>
         </KeyboardAvoidingView>
@@ -97,26 +97,32 @@ const styles = StyleSheet.create({
         marginTop: 80
     },
     input: {
-        textAlign: 'left',
-        fontSize: 15,
-        marginTop: -30,
-        paddingHorizontal: 16,
-        marginVertical: 20
+    height: 50,
+    width: 250,
+    borderColor: '#3498db',
+    borderWidth: 2,
+    borderRadius: 10,
+    paddingHorizontal: 16,
+    fontSize: 16,
+    color: '#2c3e50'
 
     },
     loginbutton: {
-        alignContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#FA3',
-        padding: 8,
-        width: 213,
-        height: 39,
-        borderRadius: 30,
-        marginTop: 25
+    backgroundColor: '#3498db',
+    borderRadius: 30,
+    width: 130,
+    paddingVertical: 15,
+    paddingHorizontal: 20,
+    marginTop: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+    elevation: 5,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 2
     },
     container: {
         justifyContent: 'center',
-        paddingHorizontal: 16,
-        marginTop: -30
+        marginTop: 1
     }
 })

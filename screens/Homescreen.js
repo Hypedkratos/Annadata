@@ -27,7 +27,7 @@ const Homescreen = () => {
       <View style={styles.Appname}>
         <Text
           style={{
-            fontWeight: 'bold', fontSize: 34, color: '#000'
+            fontWeight: 'bold', fontSize: 34, color: '#3498db'
           }}>
           Annadata Connect</Text>
       </View>
@@ -40,13 +40,12 @@ const Homescreen = () => {
           marginRight: 34,
           color: 'black'
         }}>
-          Aisa kuch immediate to nahi soche hain ki kya likhna hai.
-          Lekin dekhiye content milega to kuch na kuch to dala hi jayega,
-          Ab content ya to chat GPT se niklega ya phir mere dimag se, baki koi aur option hoga to bataiyega
-          zaroor. kaunki humara dimag hai bada hi kamzor aur nithalla. aur sab badhiya hai na?
-          Bhai itna fursat me ho ki pura hi padh liye, man na padega bhai! Nhi waah!
-          Matlab ek insaan kitna hi free fokat baith skta h, dekho besharam jaise ab bhi padhe
-          ja ra hai. koisharam naam ka cheez nahi hai.
+          Annadata, which means "Provider of Food" in Sanskrit, embodies our commitment to 
+          ensuring that no one goes to bed hungry. Our journey began with a simple yet powerful 
+          idea - to bridge the gap between the excess food from events and the pressing needs of those who lack a meal.
+          At Annadata, our mission is to collect surplus food from weddings, parties, and gatherings, and transform it into a 
+          source of hope and nourishment for the less fortunate. We believe in the transformative power of food, 
+          not only as sustenance but also as a symbol of care, love, and shared humanity.
         </Text>
       </View>
 
@@ -57,7 +56,7 @@ const Homescreen = () => {
           style={styles.button1}
         >
           <Text
-            style={{ fontSize: 15, fontWeight: 800 }}>
+            style={{ fontSize: 15, fontWeight: 'bold', color: '#fff' }}>
             Add Pickup Address
           </Text>
         </TouchableOpacity>
@@ -70,13 +69,13 @@ const Homescreen = () => {
           style={styles.button2}
         >
           <Text
-            style={{ fontSize: 15, fontWeight: 800 }}>
+            style={{ fontSize: 15, fontWeight: 'bold', color: '#fff' }}>
             Login as NGO
           </Text>
         </TouchableOpacity>
       </View>
 
-      
+
 
       {/* The footer goes here */}
       <View style={styles.footer}>
@@ -102,7 +101,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 40
+    marginTop: 40,
+    color: '#fff'
   },
   Appname: {
     marginTop: 7,
@@ -111,29 +111,37 @@ const styles = StyleSheet.create({
   descriptionbox: {
     color: 'yellow',
     alignItems: 'center',
-    marginTop: 90
+    marginTop: 60
   },
   button1: {
-    alignContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#FA3',
-    padding: 6,
-    width: 205,
-    height: 39,
+    backgroundColor: '#3498db',
     borderRadius: 30,
-    marginTop: 70
+    width: 200,
+    paddingVertical: 15,
+    paddingHorizontal: 20,
+    marginTop: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+    elevation: 5,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 2
   },
   button2: {
-    alignContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#FA3',
-    padding: 6,
-    width: 205,
-    height: 39,
+    backgroundColor: '#3498db',
     borderRadius: 30,
-    marginTop: 25,
+    width: 150,
+    paddingVertical: 15,
+    paddingHorizontal: 20,
+    marginTop: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+    elevation: 5,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 2
   },
   footer: {
-    paddingTop: 100
+    marginTop: 90
   }
 })

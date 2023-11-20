@@ -6,8 +6,8 @@ import React from 'react'
 export default function Images(){
     return (
         <View>
-            <Image source={require('../assets/logomain.png')}
-            style={{height:110, width:110, marginTop:0}}>
+            <Image source={require('../assets/logo.png')}
+            style={{height: 150, width:150,marginTop:0}}>
             </Image>
         </View>
     )

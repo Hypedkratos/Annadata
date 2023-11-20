@@ -20,7 +20,7 @@ const Pickupscreen = () => {
       <View>
         <Text
           style={{
-            color: 'black', fontSize: 24, fontWeight: 'bold', textAlign: 'justify',
+            color: '#3498db', fontSize: 24, fontWeight: 'bold', textAlign: 'justify',
             marginLeft: 10, marginRight: 10
           }}
         >Please fill in the following details to confirm pickup.</Text>
@@ -68,7 +68,7 @@ const Pickupscreen = () => {
         <TouchableOpacity
           style={styles.Buttoncontainer}
            >
-          <Text style={styles.buttonText}>Submit</Text>
+          <Text style={{fontSize:15, fontWeight:'bold', color: '#fff'}}>Submit</Text>
         </TouchableOpacity>
       </View>
     </KeyboardAvoidingView>
@@ -90,20 +90,30 @@ const styles = StyleSheet.create({
   container2: {
     justifyContent: 'center',
     paddingHorizontal: 16,
-    marginTop: 110
+    marginTop: 70
   },
   input: {
-    textAlign: 'left',
-    fontSize: 15
+    height: 50,
+    width: 280,
+    borderColor: '#3498db',
+    borderWidth: 2,
+    borderRadius: 13,
+    paddingHorizontal: 16,
+    fontSize: 16,
+    color: '#2c3e50',
   },
   Buttoncontainer: {
-    alignContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#FA3',
-    padding: 6,
-    width: 213,
-    height: 39,
+    backgroundColor: '#3498db',
     borderRadius: 30,
-    marginTop: 60
+    width: 130,
+    paddingVertical: 15,
+    paddingHorizontal: 20,
+    marginTop: 60,
+    justifyContent: 'center',
+    alignItems: 'center',
+    elevation: 5,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 2
   }
 })
