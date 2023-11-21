@@ -1,4 +1,5 @@
-import { account } from "./config";
+import { ID } from "appwrite";
+import { account, database, url } from "./config";
 export async function createUserAccount(id, email, password, name) {
     try {
         const newAccount = await account.create(
@@ -40,5 +41,28 @@ export async function getCurrentUser() {
         return user
     } catch (error) {
         console.log('account not found')
+    }
+}
+
+export async function saveOrderToDB(formData){
+    try {
+        const res = await database.createDocument(
+            url.db,url.collection,ID.unique(),
+            formData
+        )
+        console.log(res);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export async function showDB(){
+    try {
+        const res = await database.listDocuments(
+            url.db,url.collection,
+        )
+        return res
+    } catch (error) {
+        console.log(error);
     }
 }

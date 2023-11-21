@@ -37,7 +37,7 @@ const AuthContextProvider = ({ children }) => {
 
     useEffect(() => {
         checkAuth();
-    }, [])
+    }, [isAuth])
 
     return (
         <AuthContext.Provider value={{ user, isAuth, setIsAuth, setUser }}>

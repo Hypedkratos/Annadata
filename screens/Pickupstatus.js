@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View,ScrollView, TouchableOpacity } from 'react-native'
 import React, {useEffect, useState} from 'react'
 import { useNavigation } from '@react-navigation/native'
-import { logoutUserAccount } from '../appwrite/service';
+import { logoutUserAccount, showDB } from '../appwrite/service';
 import Ngologin from './Ngologin';
 import { useUser } from '../context/AuthContext';
 
@@ -25,6 +25,16 @@ const Pickupstatus = () => {
     }
 }
 
+const getData = async()=>{
+  const res=await showDB()
+  setPickupData(res.documents)
+}
+
+useEffect(() => {
+  getData()
+}, [])
+
+
   return (
     <ScrollView vertical>
       <View style={styles.maincontainer}>
@@ -36,19 +46,22 @@ const Pickupstatus = () => {
       <View style={styles.container}>
         {/* Table ka Header */}
         <View style={styles.tableHeader}>
-          <Text style={styles.columnHeader}>DATE/TIME</Text>
-          <Text style={styles.columnHeader}>STATUS</Text>
-          <Text style={styles.columnHeader}>PERSON(WITH EMAIL)</Text>
-          <Text style={styles.columnHeader}>AREA</Text>
+          <Text style={styles.columnHeader}>NAME</Text>
+          <Text style={styles.columnHeader}>MOBILE</Text>
+          <Text style={styles.columnHeader}>ADDRESS</Text>
+          <Text style={styles.columnHeader}>PINCODE</Text>
+          <Text style={styles.columnHeader}>QUANTITY</Text>
+
         </View>
 
         {/* Table ka Rows */}
         {pickupData.map((item) => (
           <View key={item._id} style={styles.tableRow}>
-            <Text style={styles.columnData}>{item.dateTime}</Text>
-            <Text style={styles.columnData}>{item.status}</Text>
-            <Text style={styles.columnData}>{item.personWithEmail}</Text>
-            <Text style={styles.columnData}>{item.area}</Text>
+            <Text style={styles.columnData}>{item.name}</Text>
+            <Text style={styles.columnData}>{item.mobile}</Text>
+            <Text style={styles.columnData}>{item.address}</Text>
+            <Text style={styles.columnData}>{item.pin_code}</Text>
+            <Text style={styles.columnData}>{item.quantity}</Text>
           </View>
         ))}
       </View>

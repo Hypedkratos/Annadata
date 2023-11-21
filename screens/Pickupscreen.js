@@ -1,16 +1,23 @@
 import { StyleSheet, Text, View, KeyboardAvoidingView, TextInput, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
+import { saveOrderToDB, showDB } from '../appwrite/service';
 
 
 const Pickupscreen = () => {
   const [name, setName] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
+  const [mobile, setMobile] = useState('');
   const [address, setAddress] = useState('');
-  const [pincode, setPincode] = useState('');
+  const [pin_code, setPin_code] = useState('');
   const [quantity, setQuantity] = useState('');
 
-  const handleSubmit = () => {
-    {/* Handle submission logic will go here */ }
+
+  const handleSubmit =async () => {
+    try {
+      const res= await saveOrderToDB({name, mobile, address, pin_code, quantity})
+      console.log(res)
+    } catch (error) {
+      console.log('Something went wrong in saving to database', error)
+    }
     console.log('Form submitted!');
   };
 
@@ -37,8 +44,8 @@ const Pickupscreen = () => {
         <TextInput
           style={styles.input}
           placeholder="Phone Number"
-          value={phoneNumber}
-          onChangeText={(text) => setPhoneNumber(text)}
+          value={mobile}
+          onChangeText={(text) => setMobile(text)}
           keyboardType="phone-pad"
         />
         <TextInput
@@ -50,8 +57,8 @@ const Pickupscreen = () => {
         <TextInput
           style={styles.input}
           placeholder="Pincode"
-          value={pincode}
-          onChangeText={(text) => setPincode(text)}
+          value={pin_code}
+          onChangeText={(text) => setPin_code(text)}
           keyboardType="phone-pad"
         />
         <TextInput
@@ -66,6 +73,7 @@ const Pickupscreen = () => {
       {/* The Submit button is here */}
       <View>
         <TouchableOpacity
+        onPress={handleSubmit}
           style={styles.Buttoncontainer}
            >
           <Text style={{fontSize:15, fontWeight:'bold', color: '#fff'}}>Submit</Text>

@@ -77,7 +77,7 @@ const Ngologin = () => {
             {/* The registration link for NGO is here */}
             <View style={{ marginTop: 15 }}>
                 <Text
-
+                    onPress={handleLinkpress}
                     style={{ color: '#0645AD', fontSize: 13 }}>
                     Not Registered? Click here!
                 </Text>
