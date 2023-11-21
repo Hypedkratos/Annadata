@@ -57,6 +57,7 @@ const Ngologin = () => {
                     style={styles.input}
                     placeholder="Password"
                     value={password}
+                    secureTextEntry={true}
                     onChangeText={(text) => setPassword(text)}
                 >
                 </TextInput>

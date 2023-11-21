@@ -55,11 +55,11 @@ useEffect(() => {
         </View>
 
         {/* Table ka Rows */}
-        {pickupData.map((item) => (
+        {pickupData.reverse().map((item) => (
           <View key={item._id} style={styles.tableRow}>
             <Text style={styles.columnData}>{item.name}</Text>
             <Text style={styles.columnData}>{item.mobile}</Text>
-            <Text style={styles.columnData}>{item.address}</Text>
+            <Text style={styles.columnDataAddress}>{item.address}</Text>
             <Text style={styles.columnData}>{item.pin_code}</Text>
             <Text style={styles.columnData}>{item.quantity}</Text>
           </View>
@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    padding: 30,
+    padding: 20,
     marginLeft:0,
     marginTop: 40
   },
@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     borderBottomWidth: 1,
-    borderBottomColor: '#ddd',
+    borderBottomColor: '#3498db',
     paddingVertical: 8,
   },
   columnHeader: {
@@ -120,6 +120,13 @@ const styles = StyleSheet.create({
   },
   columnData: {
     flex: 1,
+    fontSize: 12,
+    paddingRight: 5,
+    overflow: 'hidden',
+  },
+  columnDataAddress:{
+    overflow: 'hidden',
+    width: 90,
   },
   Buttoncontainer: {
     backgroundColor: '#3498db',

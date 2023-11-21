@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, KeyboardAvoidingView, TextInput, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, KeyboardAvoidingView, TextInput, TouchableOpacity, Modal, Button } from 'react-native'
 import React, { useState } from 'react'
 import { saveOrderToDB, showDB } from '../appwrite/service';
 
@@ -9,7 +9,10 @@ const Pickupscreen = () => {
   const [address, setAddress] = useState('');
   const [pin_code, setPin_code] = useState('');
   const [quantity, setQuantity] = useState('');
-
+  const [isModalVisible, setModalVisible] = useState(false);
+  const toggleModal = () => {
+    setModalVisible(!isModalVisible);
+  };
 
   const handleSubmit =async () => {
     try {
@@ -73,11 +76,27 @@ const Pickupscreen = () => {
       {/* The Submit button is here */}
       <View>
         <TouchableOpacity
-        onPress={handleSubmit}
+        onPress={()=>{
+          handleSubmit();
+          toggleModal();
+        }}
           style={styles.Buttoncontainer}
            >
           <Text style={{fontSize:15, fontWeight:'bold', color: '#fff'}}>Submit</Text>
         </TouchableOpacity>
+        <Modal
+        animationType="slide"
+        transparent={true}
+        visible={isModalVisible}
+        onRequestClose={toggleModal}
+      >
+        <View style={styles.modal}>
+          <View style={styles.modalContent}>
+            <Text style={styles.modalText}>Data was submitted successfully! </Text>
+            <Button title="Close" onPress={toggleModal} />
+          </View>
+        </View>
+      </Modal>
       </View>
     </KeyboardAvoidingView>
   )
@@ -123,5 +142,29 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
     shadowRadius: 2
-  }
+  },
+  modal: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  },
+  modalContent: {
+    backgroundColor: '#fff',
+    padding: 20,
+    borderRadius: 10,
+    elevation: 5,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 2,
+  },
+  modalText: {
+    fontSize: 18,
+    marginBottom: 10,
+  },
+  button: {
+    backgroundColor: '#3498db',
+    padding: 10,
+    borderRadius: 5,
+  },
 })
