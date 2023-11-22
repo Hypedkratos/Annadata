@@ -4,12 +4,19 @@ import { useNavigation } from '@react-navigation/native'
 import { logoutUserAccount, showDB } from '../appwrite/service';
 import Ngologin from './Ngologin';
 import { useUser } from '../context/AuthContext';
+import RequestScreen from './RequestScreen';
 
 const Pickupstatus = () => {
   const [pickupData, setPickupData] = useState([]);
+  const {setId} = useUser();
 
   const {setIsAuth, setUser, user}= useUser()
   const navigation=useNavigation();
+
+  const navigateToPickupdetails = (id) =>{
+    setId(id) 
+    navigation.navigate(RequestScreen)
+  }
   const handleLogout = async(e)=>{
     e.preventDefault();
     try {
@@ -21,7 +28,7 @@ const Pickupstatus = () => {
             navigation.navigate(Ngologin)
         }
     } catch (error) {
-        console.log('somethign went wrong in login', error)
+        console.log('something went wrong in login', error)
     }
 }
 
@@ -56,8 +63,8 @@ useEffect(() => {
 
         {/* Table ka Rows */}
         {pickupData.reverse().map((item) => (
-          <View key={item._id} style={styles.tableRow}>
-            <Text style={styles.columnData}>{item.name}</Text>
+          <View  key={item.$id} style={styles.tableRow}>
+            <Text onPress={()=>navigateToPickupdetails(item.$id)} style={styles.columnData}>{item.name}</Text>
             <Text style={styles.columnData}>{item.mobile}</Text>
             <Text style={styles.columnDataAddress}>{item.address}</Text>
             <Text style={styles.columnData}>{item.pin_code}</Text>

@@ -6,6 +6,7 @@ import Homescreen from "./screens/Homescreen";
 import Pickupscreen from "./screens/Pickupscreen";
 import Ngologin from "./screens/Ngologin";
 import Pickupstatus from "./screens/Pickupstatus";
+import RequestScreen from "./screens/RequestScreen";
 import AuthContextProvider from "./context/AuthContext";
 const Stack = createNativeStackNavigator();
 
@@ -17,8 +18,9 @@ export default function App (){
        <Stack.Navigator>
         <Stack.Screen options={{headerShown: false}} name="Homescreen" component={Homescreen}></Stack.Screen>
         <Stack.Screen options={{headerShown: false}} name="Pickupscreen" component={Pickupscreen}></Stack.Screen>
-        <Stack.Screen options={{headerShown:false}} name="Ngologin" component={Ngologin}></Stack.Screen>
-        <Stack.Screen options={{headerShown:false}} name="Pickupstatus" component={Pickupstatus}></Stack.Screen>
+        <Stack.Screen options={{headerShown: false}} name="Ngologin" component={Ngologin}></Stack.Screen>
+        <Stack.Screen options={{headerShown: false}} name="Pickupstatus" component={Pickupstatus}></Stack.Screen>
+        <Stack.Screen options={{headerShown: false}} name="RequestScreen" component={RequestScreen}></Stack.Screen>
        </Stack.Navigator>
        </AuthContextProvider>
      </NavigationContainer>

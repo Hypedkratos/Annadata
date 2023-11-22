@@ -66,3 +66,14 @@ export async function showDB(){
         console.log(error);
     }
 }
+
+export async function showRequest(id){
+    try {
+        const res = await database.getDocument(
+            url.db,url.collection,id
+        )
+        return res
+    } catch (error) {
+        console.log(error);
+    }
+}

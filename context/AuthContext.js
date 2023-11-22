@@ -10,9 +10,11 @@ export const intialUser = {
 
 const intialState = {
     user: intialUser,
+    id: '',
     isAuth: false,
     setIsAuth: () => { },
     setUser: () => { },
+    setId: ()=> { },
 }
 
 
@@ -25,6 +27,8 @@ const AuthContextProvider = ({ children }) => {
         email: '',
     })
     const [isAuth, setIsAuth] = useState(false)
+
+    const [id, setId] = useState("")
 
     async function checkAuth() {
         const res = await getCurrentUser();
@@ -40,7 +44,7 @@ const AuthContextProvider = ({ children }) => {
     }, [isAuth])
 
     return (
-        <AuthContext.Provider value={{ user, isAuth, setIsAuth, setUser }}>
+        <AuthContext.Provider value={{ user, isAuth, setIsAuth, setUser, setId, id }}>
             {children}
         </AuthContext.Provider>
     )
